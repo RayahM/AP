@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="607.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerLoading">
+   <children>
+      <ImageView fitHeight="615.0" fitWidth="800.0" layoutY="-6.0" pickOnBounds="true">
+         <image>
+            <Image url="@../apps.24360.9007199266251823.8de22c18-6ea5-4a03-a136-cb2184d56025.jpg" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" layoutX="311.0" layoutY="520.0" prefHeight="28.0" prefWidth="200.0" progress="0.0">
+         <effect>
+            <Glow level="0.55" />
+         </effect>
+      </ProgressBar>
+      <Label layoutX="238.0" layoutY="24.0" prefHeight="62.0" prefWidth="362.0" text="Game by Reza &amp; Arghavan" textFill="#b01717">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
