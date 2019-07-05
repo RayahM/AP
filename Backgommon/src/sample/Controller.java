@@ -2,6 +2,8 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -21,7 +23,14 @@ public class Controller implements Initializable {
    static double middle = 73;
    static double offset_y = 562;
 
+   private Image image = new Image(getClass().getResourceAsStream("spritesheet.png"));
 
+
+
+    @FXML
+    void rollDice(MouseEvent event) {
+
+    }
 
    @Override
    public void initialize(URL location, ResourceBundle resources){
