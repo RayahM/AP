@@ -39,7 +39,7 @@ public class ControllerLoading implements Initializable {
         progressBar.setProgress(0.0);
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(progressBar.progressProperty(), 0)),
-                new KeyFrame(Duration.seconds(10), e-> {
+                new KeyFrame(Duration.seconds(2), e-> {
                     this.getPrimaryStage().close();
                     Parent root = null;
                     try {

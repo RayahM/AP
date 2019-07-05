@@ -2,86 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2fe0656-bd7f-4a98-b282-e1be193d5060" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backgommon.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_1b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_2b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_3b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_4b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_5b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Dice_6b.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Backgommon/META-INF/Backgommon.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Roll_Dice.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Rolling_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Rolling_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Rolling_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Rolling_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Rolling_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Rolling_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/apps.24360.9007199266251823.8de22c18-6ea5-4a03-a136-cb2184d56025.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/backgammon-blitz-gallery-close-up-angle-brown-1200.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/backgammon_PNG3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/backgammon_slice.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/Screenie_05.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/istockphoto-1133896083-640x640.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/rules-of-backgammon.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Backgommon/sample/Board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Backgommon/sample/Board.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/sample/Choicebox.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/sample/Styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/sample/loading.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/sample/scene1.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/sample/settingScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/spritesheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_1b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_2b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_3b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_4b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_5b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dice_6b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Roll_Dice.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rolling_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rolling_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rolling_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rolling_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rolling_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rolling_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/apps.24360.9007199266251823.8de22c18-6ea5-4a03-a136-cb2184d56025.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backgammon-blitz-gallery-close-up-angle-brown-1200.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backgammon_PNG3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backgammon_slice.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Board.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Choicebox.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Backgommon/thumbs-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Board.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ControllerLoading.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ControllerScene1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ControllerSetting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Piece.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/SpriteAnimation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/loading.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/scene1.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/settingScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spritesheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ControllerLoading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ControllerLoading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Piece.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +61,41 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1003">
+              <caret line="62" column="7" lean-forward="true" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Piece.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="38" column="48" lean-forward="true" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/ControllerLoading.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -149,7 +114,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/sample/ControllerScene1.java" />
         <option value="$PROJECT_DIR$/src/sample/SpriteAnimation.java" />
+        <option value="$PROJECT_DIR$/src/sample/ControllerLoading.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
+        <option value="$PROJECT_DIR$/src/sample/Piece.java" />
       </list>
     </option>
   </component>
@@ -165,12 +132,33 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Backgommon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Backgommon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Backgommon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Backgommon" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Backgommon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Backgommon" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562365566659" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562367610756" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -269,21 +257,22 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1562261428476" duration="39160000" />
-      <workItem from="1562343835117" duration="7727000" />
+      <workItem from="1562343835117" duration="9351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6273000" />
+    <option name="totallyTimeSpent" value="7897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Capture Tool" order="0" />
       <window_info id="UI Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.21375267" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.21375267" />
       <window_info id="Structure" order="5" weight="0.25" />
       <window_info id="Favorites" order="6" />
       <window_info anchor="bottom" id="Terminal" order="0" />
@@ -291,7 +280,7 @@
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="4" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
@@ -300,7 +289,7 @@
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Changes" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.32936078" />
       <window_info anchor="bottom" id="Problems" order="15" />
       <window_info anchor="bottom" id="Version Control" order="16" weight="0.32936078" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
@@ -331,16 +320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ControllerLoading.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/scene1.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -356,13 +335,6 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-316">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SpriteAnimation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -377,16 +349,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -422,6 +384,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backgammon-blitz-gallery-close-up-angle-brown-1200.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ControllerLoading.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="38" column="48" lean-forward="true" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="62" column="7" lean-forward="true" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

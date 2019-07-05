@@ -32,21 +32,22 @@ public class Piece extends StackPane {
           else
                location_y=y*tile_y+offset_y;
 
-          relocate(location_x , location_y);
-          Circle mypiece = new Circle(15);
+         relocate(location_x , location_y);
+
+          Circle mypiece = new Circle(11);
           mypiece.setFill(type ? Color.valueOf("#4d3319") : Color.valueOf("#dfbe9f"));
           mypiece.setStroke(Color.valueOf("#271a0c"));
           mypiece.setStrokeWidth(0.1 );
           //mypiece.setTranslateX(tile * 0.15);
          // mypiece.setTranslateY(tile * 0.25);
 
-          Circle annot = new Circle(8);
-          mypiece.setStroke(Color.valueOf("#000000"));
-          mypiece.setStrokeWidth(0.15);
+          Circle annot = new Circle(15);
+          annot.setStroke(Color.valueOf("#000000"));
+          annot.setStrokeWidth(0.15);
           //mypiece.setTranslateX(tile * 0.15);
           //mypiece.setTranslateY(tile * 0.25);
 
-          //getChildren().addAll(mypiece);
+          getChildren().addAll(annot,mypiece);
 
 
          /* setOnMousePressed (e ->{

@@ -3,6 +3,9 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,6 +30,10 @@ public class Controller implements Initializable {
    int x2=7;
    int k1=1;
    int k2=1;
+
+
+
+
    for(i=0;i<5;i++){
      boardPane.getChildren().add(pieceMake(true,x1,i,k1));
      k1++;
