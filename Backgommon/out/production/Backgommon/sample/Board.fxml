@@ -8,7 +8,7 @@
 
 <AnchorPane accessibleRole="IMAGE_VIEW" prefHeight="569.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d3503" height="575.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="840.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d3503" height="675.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <ImageView fitHeight="565.0" fitWidth="625.0" layoutX="6.0" layoutY="5.0">
          <image>
             <Image url="@../backgammon_PNG3.png" />

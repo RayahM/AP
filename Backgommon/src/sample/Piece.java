@@ -19,23 +19,32 @@ public class Piece extends StackPane {
           this.num = num;
 
        //   private double mousex, mousey;
+          double location_x;
+          double location_y;
 
+          if(x<7)
+               location_x=x*tile_x+annotation_x+middle;
+          else
+               location_x=x*tile_x+annotation_x;
 
-          relocate(x * tile + annotation_x, y * tile + annotation_y);
+          if(0<y )
+               location_y=y*tile_y+annotation_y;
+          else
+               location_y=y*tile_y+offset_y;
 
+          relocate(location_x , location_y);
+          Circle mypiece = new Circle(15);
+          mypiece.setFill(type ? Color.valueOf("#4d3319") : Color.valueOf("#dfbe9f"));
+          mypiece.setStroke(Color.valueOf("#271a0c"));
+          mypiece.setStrokeWidth(0.1 );
+          //mypiece.setTranslateX(tile * 0.15);
+         // mypiece.setTranslateY(tile * 0.25);
 
-          Circle mypiece = new Circle(tile * 0.3);
-          mypiece.setFill(type ? Color.valueOf("#392613") : Color.valueOf("#dfbe9f"));
-          mypiece.setStroke(Color.valueOf("#383838"));
-          mypiece.setStrokeWidth(0.02 * tile);
-          mypiece.setTranslateX(tile * 0.15);
-          mypiece.setTranslateY(tile * 0.25);
-
-          Circle annot = new Circle(tile * 0.2);
+          Circle annot = new Circle(8);
           mypiece.setStroke(Color.valueOf("#000000"));
-          mypiece.setStrokeWidth(0.03 * tile);
-          mypiece.setTranslateX(tile * 0.15);
-          mypiece.setTranslateY(tile * 0.25);
+          mypiece.setStrokeWidth(0.15);
+          //mypiece.setTranslateX(tile * 0.15);
+          //mypiece.setTranslateY(tile * 0.25);
 
           //getChildren().addAll(mypiece);
 
@@ -52,4 +61,12 @@ public class Piece extends StackPane {
 
 
      }
+
+////////
+    /* public void move( int newx,int newy){
+          this.x=newx;
+          this.y=newy;
+          relocate(x*,y*);
+
+          return;}*/
 }
