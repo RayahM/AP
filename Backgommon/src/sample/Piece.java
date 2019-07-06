@@ -49,13 +49,13 @@ public class Piece extends StackPane {
          relocate(location_x , location_y);
 
 
-          mypiece.setFill(type ? Color.valueOf("#4d3319") : Color.valueOf("#dfbe9f"));
+          mypiece.setFill(!type ? Color.valueOf("#4d3319") : Color.valueOf("#dfbe9f"));
           mypiece.setStroke(Color.valueOf("#140d06"));
           mypiece.setStrokeWidth(0.15 );
 
 
 
-          annot.setFill(type ? Color.valueOf("#3b2712") : Color.valueOf("#dbb48a"));
+          annot.setFill(!type ? Color.valueOf("#3b2712") : Color.valueOf("#dbb48a"));
           annot.setStroke(Color.valueOf("#140d06"));
           annot.setStrokeWidth(0.17);
 
@@ -87,27 +87,40 @@ public class Piece extends StackPane {
 
 
 
-     public void move( int newx,int newy,Cell[] board){
+     public void move( int newx,int newy,Cell[] board) {
+         if (newy == 0 || newx == 0) {
+             relocate(location_x, location_y);
+         }
 
-         if(newy>0)
-             home=board[newx-1];
-         else
-             home=board[24-newx];
+         else {
 
-         if(x>6)
-             location_x=newx*tile_x+annotation_x+middle;
-         else
-             location_x=newx*tile_x+annotation_x;
+             if (newy > 0) {
+                 home = board[newx - 1];
+                 newy = board[newx - 1].piece_n + 1;
+             }
+             else {
+                 home = board[24 - newx];
+                 newy = (board[24 - newx].piece_n + 1)*-1;
+             }
 
-         if(0<y )
-             location_y=newy*tile_y+annotation_y;
-         else
-             location_y=newy*tile_y+offset_y;
+         if (newx > 6) {
+             location_x = newx * tile_x + annotation_x + middle;
+         }
+
+         else {
+             location_x = newx * tile_x + annotation_x;
+         }
+
+         if (0 < newy) {
+             location_y = newy * tile_y + annotation_y;
+         }
+         else {
+             location_y = newy * tile_y + offset_y;
+         }
+
+         relocate(location_x, location_y);
 
 
-          relocate(location_x,location_y);
-
-
-
+     }
           return;}
 }
