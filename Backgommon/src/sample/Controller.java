@@ -19,12 +19,19 @@ public class Controller implements Initializable {
    @FXML
    private AnchorPane boardPane;
 
-   static double tile_x = 37;
-   static double tile_y = 26;
-   static double annotation_x=58;
-   static double annotation_y=12;
-   static double middle = 73;
-   static double offset_y = 562;
+   public Cell[] board_cell;
+   boolean actionDone;
+   static double tile_x = 37.5;
+   static double tile_y = 32;
+   static double annotation_x=40;
+   static double annotation_y=-5;
+   static double middle = 40;
+   static double offset_y = 548;
+
+
+    double layoutx;
+    double layouty;
+
 
    private Image imageDice1 = new Image(getClass().getResourceAsStream("spritesheet.png"));
     private Image imageDice2 = new Image(getClass().getResourceAsStream("spritesheetR.png"));
@@ -90,46 +97,61 @@ public class Controller implements Initializable {
    int x2=7;
    int k1=1;
    int k2=1;
+ board_cell = new Cell[24];
+ for(i=0;i<24;i++){
+     board_cell[i] = new Cell();
+ }
 
 
 
-
-   for(i=0;i<5;i++){
+   for(i=1;i<6;i++){
      boardPane.getChildren().add(pieceMake(true,x1,i,k1));
+     actionDone=board_cell[x1-1].addPiece(true,k1);
      k1++;
      boardPane.getChildren().add(pieceMake(true,x2,-1*i,k1));
+     actionDone=board_cell[24-x2].addPiece(true,k1);
      k1++;
      boardPane.getChildren().add(pieceMake(false,x2,i,k2));
+     actionDone=board_cell[x2-1].addPiece(false,k2);
      k2++;
      boardPane.getChildren().add(pieceMake(false,x1,-1*i,k2));
+     actionDone=board_cell[24-x1].addPiece(false,k2);
      k2++;
 
    }
 
    x1=5;
-      for(i=0;i<3;i++) {
-         boardPane.getChildren().add(pieceMake(true,x1,-1*i,k1));
-         k1++;
+      for(i=1;i<4;i++) {
+
          boardPane.getChildren().add(pieceMake(false,x1,i,k2));
-         k2++;
+         actionDone=board_cell[x1].addPiece(false,k2);
+         k1++;
+
+         boardPane.getChildren().add(pieceMake(true,x1,-1*i,k1));
+         actionDone=board_cell[24-x1].addPiece(true,k1);
+         k1++;
+
+
       }
 
       x2=12;
-      for(i=0;i<2;i++) {
+      for(i=1;i<3;i++) {
          boardPane.getChildren().add(pieceMake(true,x2,i,k1));
+          actionDone=board_cell[x2].addPiece(true,k1);
          k1++;
          boardPane.getChildren().add(pieceMake(false,x2,-1*i,k2));
+          actionDone=board_cell[24-x2].addPiece(false,k2);
          k2++;
       }
    }
 
  private Piece pieceMake(boolean type,int x,int y,int num){
-   Piece piece = new Piece(type,x,y,num);
+   Piece piece = new Piece(type,x,y,num,board_cell);
 
    piece.setOnMouseReleased(e -> {
-      double newx=piece.getLayoutX();
+     layoutx=piece.getLayoutX();
 
-      double newy=piece.getLayoutY();
+      layouty=piece.getLayoutY();
 
    });
 
