@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package sample;
 
 import javafx.scene.image.Image;
@@ -66,26 +65,3 @@ public class Model {
     }
 
 }
-=======
-package sample;
-
-import javafx.scene.image.Image;
-
-public class Model {
-
-    public int randomDice(){
-
-        int max = 6;
-        int min = 1;
-        int diceRange = max - min +1;
-
-        int rand = (int)(Math.random()*diceRange) + min;
-        return rand;
-    }
-
-    public Image getImage(String address){
-        return new Image(getClass().getResourceAsStream(address));
-    }
-
-}
->>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
