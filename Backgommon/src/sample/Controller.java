@@ -32,7 +32,7 @@ public class Controller implements Initializable {
    private int spriteCounts = 6;
    private int spriteOffsetX = 0;
    private int spriteOffsetY = 0;
-   private int spriteWidth = 69;
+   private int spriteWidth = 67;
    private int spriteHeight = 70;
 
 
@@ -43,7 +43,7 @@ public class Controller implements Initializable {
         imageViewDice1.setTranslateY(260);
 
         ImageView imageViewDice2 = new ImageView(imageDice2);
-        imageViewDice2.setTranslateX(420);
+        imageViewDice2.setTranslateX(440);
         imageViewDice2.setTranslateY(260);
         imageViewDice1.setViewport(new Rectangle2D(spriteOffsetX,spriteOffsetY,spriteWidth,spriteHeight));
         imageViewDice2.setViewport(new Rectangle2D(spriteOffsetX,spriteOffsetY,spriteWidth,spriteHeight));
