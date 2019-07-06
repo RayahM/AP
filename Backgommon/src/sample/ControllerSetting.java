@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,6 +31,12 @@ public class ControllerSetting implements Initializable {
     private ChoiceBox<String> rounds;
 
 
+    @FXML
+    private TextField user2;
+
+    @FXML
+    private TextField user1;
+
 
     @FXML
     void backToMain(ActionEvent event)throws IOException {
@@ -39,6 +46,8 @@ public class ControllerSetting implements Initializable {
         ControllerScene1 scene1 = loader.getController();
         scene1.setPlayerTime(this.playerTime.getValue());
         scene1.setRounds(this.rounds.getValue());
+        scene1.setUser1Name(user1.getText());
+        scene1.setUser2Name(user2.getText());
         Scene mainScene = new Scene(mainParent);
         Stage mainWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
         mainWindow.setScene(mainScene);
@@ -56,6 +65,12 @@ public class ControllerSetting implements Initializable {
 
         playerTime.setItems(FXCollections.observableArrayList(playerTimeNumbers));
         rounds.setItems(FXCollections.observableArrayList(roundsNumbers));
+
+        user1.textProperty().addListener((observable, oldValue, newValue) ->
+                user1.setText(newValue));
+        user2.textProperty().addListener((observable, oldValue, newValue) ->
+                user2.setText(newValue));
+
 
     }
 
