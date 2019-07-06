@@ -20,6 +20,16 @@ public class ControllerScene1 implements Initializable {
     @FXML
     private String rounds="1";
 
+    private Stage stage;
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     public String getUser1Name() {
         return user1Name;
     }
@@ -76,6 +86,7 @@ public class ControllerScene1 implements Initializable {
         Parent newGame = loader.load() ;
         ControllerPieceSelector controllerPieceSelector = loader.getController();
         controllerPieceSelector.initValue(getUser1Name(),getUser2Name());
+        controllerPieceSelector.setLastStage(getStage());
         Scene newScene = new Scene(newGame);
         Stage newStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         newStage.setScene(newScene);
@@ -86,5 +97,9 @@ public class ControllerScene1 implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    public void initValue(Stage stage){
+        setStage(stage);
     }
 }

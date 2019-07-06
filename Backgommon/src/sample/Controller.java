@@ -42,6 +42,8 @@ public class Controller implements Initializable {
 
 
 
+   private String player1User = "Player1";
+    private String player2User = "Player2";
    private int spriteColumns = 3;
    private int spriteCounts = 6;
    private int spriteOffsetX = 0;
@@ -285,7 +287,7 @@ public class Controller implements Initializable {
         boardPane.getChildren().add(stackMinute[0]);
 
         Text[] gameTime = new Text[2];
-        gameTime[0] = new Text(("Player1 Time:"));
+        gameTime[0] = new Text((player1User+" Time:"));
         gameTime[0].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
         gameTime[0].setFill(Color.GOLD);
         gameTime[0].setTranslateX(637);
@@ -322,7 +324,7 @@ public class Controller implements Initializable {
         stackMinute[1].relocate(740,350);
         boardPane.getChildren().add(stackMinute[1]);
 
-        gameTime[1] = new Text(("Player2 Time:"));
+        gameTime[1] = new Text(player2User+" Time:");
         gameTime[1].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
         gameTime[1].setFill(Color.GOLD);
         gameTime[1].setTranslateX(637);
@@ -331,6 +333,10 @@ public class Controller implements Initializable {
 
 
 
+    }
+
+    public void turnPlay(int dice1, int dice2, String player1User, String player2User, boolean turn ){
+            model.moveDetector(dice1,dice2,turn,board_cell);
     }
 
 }

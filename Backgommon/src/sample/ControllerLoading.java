@@ -34,7 +34,7 @@ public class ControllerLoading implements Initializable {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)  {
 
         progressBar.setProgress(0.0);
         Timeline timeline = new Timeline(
@@ -42,14 +42,18 @@ public class ControllerLoading implements Initializable {
                 new KeyFrame(Duration.seconds(2), e-> {
                     this.getPrimaryStage().close();
                     Parent root = null;
+                    FXMLLoader loader =  new FXMLLoader();
                     try {
-                        root = FXMLLoader.load(getClass().getResource("scene1.fxml"));
+
+                        root = loader.load(getClass().getResource("scene1.fxml")) ;
+
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
                     Stage stage= new Stage();
                     stage.setTitle("Backgommon");
                     stage.setScene(new Scene(root, 800, 600));
+
                     stage.show();
 
                 }, new KeyValue(progressBar.progressProperty(), 1))

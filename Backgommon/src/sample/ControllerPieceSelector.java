@@ -4,14 +4,21 @@ import javafx.animation.Animation;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
+import java.io.IOException;
 
 
 public class ControllerPieceSelector {
@@ -25,7 +32,21 @@ public class ControllerPieceSelector {
     private int dice1;
     private int dice2;
     private boolean diceRoll = false;
+    private ImageView dice1K;
+    private ImageView dice2K;
     Model model = new Model();
+    private Stage lastStage;
+
+
+
+
+    public Stage getLastStage() {
+        return lastStage;
+    }
+
+    public void setLastStage(Stage lastStage) {
+        this.lastStage = lastStage;
+    }
 
     public int getDice1() {
         return dice1;
@@ -56,6 +77,8 @@ public class ControllerPieceSelector {
     void rollDice(MouseEvent event) {
 
         if(!diceRoll) {
+            selectorPane.getChildren().remove(dice1K);
+            selectorPane.getChildren().remove(dice2K);
             ImageView imageViewDice1 = new ImageView(model.getImage("spritesheet.png"));
             imageViewDice1.setTranslateX(150);
             imageViewDice1.setTranslateY(200);
@@ -94,45 +117,29 @@ public class ControllerPieceSelector {
             animationDice1.setOnFinished(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+
                     selectorPane.getChildren().remove(imageViewDice1);
                     selectorPane.getChildren().remove(imageViewDice2);
                     setDice1(model.randomDice());
                     setDice2(model.randomDice());
                     ImageView diceI1 = new ImageView(model.getImage("Dice_" + getDice1() + ".png"));
+                    dice1K = diceI1;
                     diceI1.setTranslateX(150);
                     diceI1.setTranslateY(200);
                     ImageView diceI2 = new ImageView(model.getImage("Dice_" + getDice2() + ".png"));
+                    dice2K = diceI2;
                     diceI2.setTranslateX(550);
                     diceI2.setTranslateY(200);
                     selectorPane.getChildren().addAll(diceI1, diceI2);
-                    diceRoll = true;
-                    Button darkButton = new Button();
-                    darkButton.setText("Dark Pieces");
-                    darkButton.setStyle("-fx-font-weight: bold;");
-                    darkButton.setStyle("-fx-background-color: #4d3319");
+                    if(getDice1()!=getDice2()) {
+                        diceRoll = true;
 
 
 
-                    darkButton.setTranslateX(250);
-                    darkButton.setTranslateY(400);
 
 
-                    Button lightButton = new Button();
-                    lightButton.setText("Light Pieces");
-                    lightButton.setStyle("-fx-font-weight: bold;");
-                    lightButton.setStyle("-fx-background-color: #dfbe9f");
 
-
-                    lightButton.setTranslateX(450);
-                    lightButton.setTranslateY(400);
-
-                    selectorPane.getChildren().addAll(darkButton,lightButton);
-
-                    darkButton.setOnMouseClicked(e-> {
-
-                    });
-
-
+                    }
 
                 }
             });
@@ -147,6 +154,28 @@ public class ControllerPieceSelector {
 
         this.player1Name.setText(user1Name);
         this.player2Name.setText(user2Name);
+
+    }
+
+
+    @FXML
+    void darkMode(MouseEvent event) throws IOException {
+
+        if(diceRoll){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Board.fxml"));
+            Parent newGame = loader.load() ;
+            Controller controller = loader.getController();
+            controller.turnPlay(getDice1(),getDice2(),player1Name.toString(),player2Name.toString(),true);
+            Scene newScene = new Scene(newGame);
+            Stage newStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            newStage.setScene(newScene);
+            newStage.show();
+        }
+    }
+
+    @FXML
+    void lightMode(MouseEvent event) {
 
     }
 
