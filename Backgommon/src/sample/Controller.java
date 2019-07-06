@@ -35,6 +35,7 @@ public class Controller implements Initializable {
    static double middle = 40;
    static double offset_y = 548;
     Model model = new Model();
+<<<<<<< HEAD
 
 
     double layoutx;
@@ -44,6 +45,15 @@ public class Controller implements Initializable {
 
    private String player1User = "Player1";
     private String player2User = "Player2";
+=======
+
+
+    double layoutx;
+    double layouty;
+
+
+
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
    private int spriteColumns = 3;
    private int spriteCounts = 6;
    private int spriteOffsetX = 0;
@@ -55,6 +65,7 @@ public class Controller implements Initializable {
     static int player1TimeLimit;
     static int player2TimeLimit;
     static int roundsOfPlay;
+<<<<<<< HEAD
     static LinkedHashMap<Integer, ArrayList<Integer>> hintMove= new LinkedHashMap<Integer, ArrayList<Integer>>();
     private boolean turn = false;
 
@@ -70,6 +81,22 @@ public class Controller implements Initializable {
         return dice2;
     }
 
+=======
+    private boolean turn = false;
+
+    public int getDice1() {
+        return dice1;
+    }
+
+    public void setDice1(int dice1) {
+        this.dice1 = dice1;
+    }
+
+    public int getDice2() {
+        return dice2;
+    }
+
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
     public void setDice2(int dice2) {
         this.dice2 = dice2;
     }
@@ -135,12 +162,18 @@ public class Controller implements Initializable {
    int i;
    int x1=1;
    int x2=7;
+<<<<<<< HEAD
    int k1=0;
    int k2=0;
+=======
+   int k1=1;
+   int k2=1;
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
  board_cell = new Cell[24];
  for(i=0;i<24;i++){
      board_cell[i] = new Cell();
  }
+<<<<<<< HEAD
 
     Piece[] boardPieceL = new Piece[15];
     Piece[] boardPieceD = new Piece[15];
@@ -163,6 +196,23 @@ public class Controller implements Initializable {
        boardPieceD[k2] = pieceMake(false ,x1,-1*i,k2);
      boardPane.getChildren().add(boardPieceD[k2]);
      actionDone=board_cell[24-x1].addPiece(false ,boardPieceD[k2]);
+=======
+
+
+
+   for(i=1;i<6;i++){
+     boardPane.getChildren().add(pieceMake(true,x1,i,k1));
+     actionDone=board_cell[x1-1].addPiece(true,k1);
+     k1++;
+     boardPane.getChildren().add(pieceMake(true,x2,-1*i,k1));
+     actionDone=board_cell[24-x2].addPiece(true,k1);
+     k1++;
+     boardPane.getChildren().add(pieceMake(false,x2,i,k2));
+     actionDone=board_cell[x2-1].addPiece(false,k2);
+     k2++;
+     boardPane.getChildren().add(pieceMake(false ,x1,-1*i,k2));
+     actionDone=board_cell[24-x1].addPiece(false ,k2);
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
      k2++;
 
    }
@@ -170,6 +220,7 @@ public class Controller implements Initializable {
    x1=5;
       for(i=1;i<4;i++) {
 
+<<<<<<< HEAD
           boardPieceD[k2] =  pieceMake(false,x1,i,k2);
          boardPane.getChildren().add(boardPieceD[k2]);
          actionDone=board_cell[x1-1].addPiece(false,boardPieceD[k2]);
@@ -178,6 +229,14 @@ public class Controller implements Initializable {
          boardPieceL[k1] = pieceMake(true,x1,-1*i,k1);
          boardPane.getChildren().add(boardPieceL[k1]);
          actionDone=board_cell[24-x1].addPiece(true,boardPieceL[k1]);
+=======
+         boardPane.getChildren().add(pieceMake(false,x1,i,k2));
+         actionDone=board_cell[x1-1].addPiece(false,k2);
+         k1++;
+
+         boardPane.getChildren().add(pieceMake(true,x1,-1*i,k1));
+         actionDone=board_cell[24-x1].addPiece(true,k1);
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
          k1++;
 
 
@@ -185,6 +244,7 @@ public class Controller implements Initializable {
 
       x2=12;
       for(i=1;i<3;i++) {
+<<<<<<< HEAD
 
           boardPieceL[k1] = pieceMake(true,x2,i,k1);
          boardPane.getChildren().add(boardPieceL[k1]);
@@ -194,6 +254,13 @@ public class Controller implements Initializable {
          boardPieceD[k2] = pieceMake(false,x2,-1*i,k2);
          boardPane.getChildren().add(boardPieceD[k2]);
           actionDone=board_cell[24-x2].addPiece(false,boardPieceD[k2]);
+=======
+         boardPane.getChildren().add(pieceMake(true,x2,i,k1));
+          actionDone=board_cell[x2-1].addPiece(true,k1);
+         k1++;
+         boardPane.getChildren().add(pieceMake(false,x2,-1*i,k2));
+          actionDone=board_cell[24-x2].addPiece(false,k2);
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
          k2++;
       }
    }
@@ -203,9 +270,15 @@ public class Controller implements Initializable {
 
    piece.setOnMouseReleased(e -> {
      layoutx=piece.getLayoutX();
+<<<<<<< HEAD
 
       layouty=piece.getLayoutY();
 
+=======
+
+      layouty=piece.getLayoutY();
+
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
       piece.move(findx(layoutx),findy(layouty),board_cell);
 
    });
@@ -287,7 +360,11 @@ public class Controller implements Initializable {
         boardPane.getChildren().add(stackMinute[0]);
 
         Text[] gameTime = new Text[2];
+<<<<<<< HEAD
         gameTime[0] = new Text((player1User+" Time:"));
+=======
+        gameTime[0] = new Text(("Player1 Time:"));
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
         gameTime[0].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
         gameTime[0].setFill(Color.GOLD);
         gameTime[0].setTranslateX(637);
@@ -324,7 +401,11 @@ public class Controller implements Initializable {
         stackMinute[1].relocate(740,350);
         boardPane.getChildren().add(stackMinute[1]);
 
+<<<<<<< HEAD
         gameTime[1] = new Text(player2User+" Time:");
+=======
+        gameTime[1] = new Text(("Player2 Time:"));
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
         gameTime[1].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
         gameTime[1].setFill(Color.GOLD);
         gameTime[1].setTranslateX(637);
@@ -335,8 +416,11 @@ public class Controller implements Initializable {
 
     }
 
+<<<<<<< HEAD
     public void turnPlay(int dice1, int dice2, String player1User, String player2User, boolean turn ){
             model.moveDetector(dice1,dice2,turn,board_cell);
     }
 
+=======
+>>>>>>> 37ea10325f8a72f8fbc3c0b9b1d532551c0eec16
 }
