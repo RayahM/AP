@@ -18,9 +18,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller implements Initializable {
    @FXML
@@ -66,6 +64,8 @@ public class Controller implements Initializable {
     private int darkDice=0;
     private boolean lockDice = false;
     static int[] undo = new int[4];
+    private int player1Wins =0;
+    private int player2Wins =0;
 
     public void setPlayer1User(String player1User) {
         this.player1User = player1User;
@@ -242,7 +242,7 @@ public class Controller implements Initializable {
 
        layouty = piece.getLayoutY();
        Move move;
-       if (moveLevel != MoveLevel.done && piece.type==turn) {
+       if (moveLevel != MoveLevel.done && piece.type==turn ) {
 
            if (!(moveLevel == MoveLevel.minMax2) && !(moveLevel == MoveLevel.maxMin2)) {
                System.out.println(turn);
@@ -372,13 +372,17 @@ public class Controller implements Initializable {
                    if (moveLevel == MoveLevel.maxMin2) {
                        if (dice1 < dice2) {
                            grayDice(0);
-                       } else {
+                       } else if(dice1 == dice2) {
+                           grayDice(2);
+                       } else{
                            grayDice(1);
                        }
                    } else {
                        if (dice1 > dice2) {
                            grayDice(0);
-                       } else {
+                       } else if(dice1 == dice2) {
+                           grayDice(2);
+                       }else{
                            grayDice(1);
                        }
                    }
@@ -446,7 +450,7 @@ public class Controller implements Initializable {
         stackSecond[0].getChildren().add(circ[0]);
         Text[] text = new Text[3];
         System.out.println(player1TimeLimit);
-        text[0] = new Text((Integer.toString(player1TimeLimit)));
+        text[0] = new Text((Integer.toString(player1TimeLimit%60)));
         text[0].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),20));
         text[0].setFill(Color.DARKGREEN);
         stackSecond[0].getChildren().add(text[0]);
@@ -482,11 +486,30 @@ public class Controller implements Initializable {
         gameTime[0].setTranslateY(470);
         boardPane.getChildren().add(gameTime[0]);
 
+        Timer[] timer = new Timer[3];
+        timer[0] = new Timer();
+        TimerTask[] task = new TimerTask[3];
+        task[0]= new TimerTask() {
+            @Override
+            public void run() {
+                if(turn) {
+                    player1TimeLimit--;
+                }
+                text[0].setText(Integer.toString(player1TimeLimit%60));
+                textMinute[0].setText(Integer.toString((player1TimeLimit/60)%60));
+
+
+
+            }
+        };
+
+        timer[0].scheduleAtFixedRate(task[0],0,1000);
+
 
         stackSecond[1]= new StackPane();
         circ[1]= new Circle(16, Color.BISQUE);
         stackSecond[1].getChildren().add(circ[1]);
-        text[1] = new Text((Integer.toString(player2TimeLimit)));
+        text[1] = new Text((Integer.toString(player2TimeLimit%60)));
         text[1].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),20));
         text[1].setFill(Color.DARKGREEN);
         stackSecond[1].getChildren().add(text[1]);
@@ -519,9 +542,80 @@ public class Controller implements Initializable {
         gameTime[1].setTranslateY(370);
         boardPane.getChildren().add(gameTime[1]);
 
+        timer[1] = new Timer();
+        task[1]= new TimerTask() {
+            @Override
+            public void run() {
+                if(!turn) {
+                    player2TimeLimit--;
+                }
+                text[1].setText(Integer.toString(player2TimeLimit%60));
+                textMinute[1].setText(Integer.toString((player2TimeLimit/60)%60));
+
+
+
+            }
+        };
+
+        timer[1].scheduleAtFixedRate(task[1],0,1000);
+
+
 
 
     }
+
+    public void roundPlay(){
+        StackPane[] stackRound = new StackPane[2];
+        stackRound[0]= new StackPane();
+        Circle[] circ = new Circle[2];
+        circ[0]= new Circle(16, Color.BISQUE);
+        stackRound[0].getChildren().add(circ[0]);
+        Text[] text = new Text[2];
+        text[0] = new Text(Integer.toString(player1Wins));
+        text[0].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),20));
+        text[0].setFill(Color.DARKGREEN);
+        stackRound[0].getChildren().add(text[0]);
+        stackRound[0].relocate(780,250);
+        boardPane.getChildren().add(stackRound[0]);
+
+
+        Text[] userRound = new Text[2];
+        userRound[0] = new Text((getPlayer1User()+" R:"));
+        userRound[0].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
+        userRound[0].setFill(Color.GOLD);
+        userRound[0].setTranslateX(637);
+        userRound[0].setTranslateY(270);
+        boardPane.getChildren().add(userRound[0]);
+
+
+
+        stackRound[1]= new StackPane();
+        circ[1]= new Circle(16, Color.BISQUE);
+        stackRound[1].getChildren().add(circ[1]);
+        text[1] = new Text((Integer.toString(player2Wins)));
+        text[1].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),20));
+        text[1].setFill(Color.DARKGREEN);
+        stackRound[1].getChildren().add(text[1]);
+        stackRound[1].relocate(780,150);
+        boardPane.getChildren().add(stackRound[1]);
+
+
+
+
+        userRound[1] = new Text(getPlayer2User()+" R:");
+        userRound[1].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
+        userRound[1].setFill(Color.GOLD);
+        userRound[1].setTranslateX(637);
+        userRound[1].setTranslateY(170);
+        boardPane.getChildren().add(userRound[1]);
+
+
+
+
+
+    }
+
+
 
     public void turnPlay( boolean turn ){
             this.turn = turn;
@@ -533,6 +627,8 @@ public class Controller implements Initializable {
             }
             model.moveDetector(dice1,dice2,turn,board_cell);
             initializeClk();
+            roundPlay();
+            showTurn();
 
     }
 
@@ -541,6 +637,7 @@ public class Controller implements Initializable {
         model.max.clear();
         model.min.clear();
         lockDice = false;
+        showTurn();
 
     }
 
@@ -551,8 +648,8 @@ public class Controller implements Initializable {
         this.setDice2(dice2);
         showDice();
         this.roundsOfPlay = Integer.parseInt(rounds);
-        this.player1TimeLimit = Integer.parseInt(playerTime);
-        this.player2TimeLimit = Integer.parseInt(playerTime);
+        this.player1TimeLimit = Integer.parseInt(playerTime)*60;
+        this.player2TimeLimit = Integer.parseInt(playerTime)*60;
     }
 
     public void showDice(){
@@ -581,6 +678,28 @@ public class Controller implements Initializable {
             diceI2.setTranslateY(260);
             boardPane.getChildren().add(diceI2);
         }
+    }
+
+    public void showTurn(){
+        Text turnText = new Text("Turn :");
+        turnText.setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
+        turnText.setFill(Color.GOLD);
+        turnText.setTranslateX(637);
+        turnText.setTranslateY(70);
+        boardPane.getChildren().add(turnText);
+
+        Circle circ ;
+        if(turn) {
+            circ = new Circle(22, Color.valueOf("#dfbe9f"));
+        }else {
+            circ = new Circle(22, Color.valueOf("#4d3319"));
+        }
+        circ.relocate(780,35);
+        boardPane.getChildren().add(circ);
+
+
+
+
     }
 
 }

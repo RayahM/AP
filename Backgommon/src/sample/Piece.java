@@ -76,9 +76,9 @@ public class Piece extends StackPane {
                if(moveLevel!=MoveLevel.done  && type== Controller.turn) {
                    if (canSelect) {
                        if (moveLevel != MoveLevel.maxMin2 && moveLevel != MoveLevel.minMax2) {
-                           model.disStroke(board);
+                           model.disStroke(board,currentCell);
                        } else {
-                           model.disStrokeMove2(board, undo[0]);
+                           model.disStrokeMove2(board, undo[0],currentCell);
                        }
                        mypiece.setStroke(Color.valueOf("#008000"));
                        mypiece.setStrokeWidth(3);
@@ -111,6 +111,7 @@ public class Piece extends StackPane {
      }
      public void disStroke(){
          mypiece.setStroke(Color.valueOf("#140d06"));
+         canSelect = false;
          mypiece.setStrokeWidth(0.15 );
      }
 

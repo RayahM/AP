@@ -4,8 +4,10 @@
     <list default="true" id="e2fe0656-bd7f-4a98-b282-e1be193d5060" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MoveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MoveType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MoveLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MoveLevel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/loading.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/loading.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/scene1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/scene1.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -105,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/MoveLevel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+              <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -113,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Piece.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="75" column="70" selection-start-line="75" selection-start-column="70" selection-end-line="75" selection-end-column="70" />
+            <state relative-caret-position="274">
+              <caret line="58" column="57" selection-start-line="58" selection-start-column="48" selection-end-line="58" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -122,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Cell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
-              <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
+            <state relative-caret-position="155">
+              <caret line="47" column="23" lean-forward="true" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -131,16 +133,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="718" selection-start-line="718" selection-end-line="718" />
+            <state relative-caret-position="2254">
+              <caret line="710" column="32" lean-forward="true" selection-start-line="710" selection-start-column="32" selection-end-line="710" selection-end-column="32" />
               <folding>
                 <element signature="method#randomDice#0;class#Model#0" />
+                <element signature="method#moveDetector#0;class#Model#0" />
                 <element signature="method#disStroke#0;class#Model#0" />
                 <element signature="method#disStrokeMove2#0;class#Model#0" />
                 <element signature="method#detectStroke#0;class#Model#0" />
                 <element signature="method#cellMoveDetectMin#0;class#Model#0" />
-                <element signature="method#cellMoveDetectMax#0;class#Model#0" />
-                <element signature="method#secondCellDetect#0;class#Model#0" />
               </folding>
             </state>
           </provider>
@@ -149,18 +150,48 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="396" column="25" selection-start-line="396" selection-start-column="25" selection-end-line="396" selection-end-column="25" />
+            <state relative-caret-position="305">
+              <caret line="154" column="46" lean-forward="true" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
               <folding>
-                <element signature="e#2566#5408#0" />
                 <element signature="e#5413#7348#0" />
+                <element signature="e#7379#14531#0" />
+                <element signature="e#14534#14869#0" />
                 <element signature="e#13019#13276#0" />
-                <element signature="e#13282#17210#0" />
+                <element signature="e#15105#20014#0" />
+                <element signature="e#17408#17746#0" expanded="true" />
+                <element signature="e#17745#17746#0" expanded="true" />
+                <element signature="e#20024#24933#0" />
                 <element signature="e#17216#17538#0" />
                 <element signature="e#17544#17652#0" />
-                <element signature="e#17658#18125#0" />
+                <element signature="e#20517#20990#0" />
                 <element signature="e#18131#18505#0" />
                 <element signature="e#18511#19151#0" />
+                <element signature="e#24072#24575#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/scene1.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="116" selection-start-line="12" selection-start-column="116" selection-end-line="12" selection-end-column="116" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/ControllerPieceSelector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="193" column="39" lean-forward="true" selection-start-line="193" selection-start-column="39" selection-end-line="193" selection-end-column="39" />
+              <folding>
+                <element signature="e#1318#1319#0" expanded="true" />
+                <element signature="e#1354#1355#0" expanded="true" />
+                <element signature="e#1387#1388#0" expanded="true" />
+                <element signature="e#1416#1417#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -182,6 +213,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>disStroke</find>
+      <find>canSelect</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,11 +229,11 @@
         <option value="$PROJECT_DIR$/src/sample/ControllerPieceSelector.java" />
         <option value="$PROJECT_DIR$/src/sample/Cell.java" />
         <option value="$PROJECT_DIR$/src/sample/Move.java" />
-        <option value="$PROJECT_DIR$/src/sample/MoveLevel.java" />
         <option value="$PROJECT_DIR$/src/sample/MoveType.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model.java" />
         <option value="$PROJECT_DIR$/src/sample/Piece.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
+        <option value="$PROJECT_DIR$/src/sample/MoveLevel.java" />
       </list>
     </option>
   </component>
@@ -246,7 +278,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562517173677" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562536949019" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -354,12 +386,12 @@
       <workItem from="1562383475318" duration="32614000" />
       <workItem from="1562435905219" duration="6889000" />
       <workItem from="1562467945032" duration="44709000" />
-      <workItem from="1562519411666" duration="9031000" />
+      <workItem from="1562519411666" duration="15259000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105561000" />
+    <option name="totallyTimeSpent" value="111789000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -447,14 +479,6 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/scene1.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="116" selection-start-line="11" selection-start-column="116" selection-end-line="11" selection-end-column="116" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -536,23 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ControllerPieceSelector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="194" column="36" selection-start-line="194" selection-start-column="36" selection-end-line="194" selection-end-column="36" />
-          <folding>
-            <element signature="e#1126#1127#0" expanded="true" />
-            <element signature="e#1170#1171#0" expanded="true" />
-            <element signature="e#1207#1208#0" expanded="true" />
-            <element signature="e#1240#1241#0" expanded="true" />
-            <element signature="e#1318#1319#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1387#1388#0" expanded="true" />
-            <element signature="e#1416#1417#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ControllerLoading.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -585,20 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MoveLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/MoveType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -606,43 +599,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="47" column="23" lean-forward="true" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ControllerPieceSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="193" column="39" lean-forward="true" selection-start-line="193" selection-start-column="39" selection-end-line="193" selection-end-column="39" />
+          <folding>
+            <element signature="e#1318#1319#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1416#1417#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/scene1.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="116" selection-start-line="12" selection-start-column="116" selection-end-line="12" selection-end-column="116" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="718" selection-start-line="718" selection-end-line="718" />
+        <state relative-caret-position="2254">
+          <caret line="710" column="32" lean-forward="true" selection-start-line="710" selection-start-column="32" selection-end-line="710" selection-end-column="32" />
           <folding>
             <element signature="method#randomDice#0;class#Model#0" />
+            <element signature="method#moveDetector#0;class#Model#0" />
             <element signature="method#disStroke#0;class#Model#0" />
             <element signature="method#disStrokeMove2#0;class#Model#0" />
             <element signature="method#detectStroke#0;class#Model#0" />
             <element signature="method#cellMoveDetectMin#0;class#Model#0" />
-            <element signature="method#cellMoveDetectMax#0;class#Model#0" />
-            <element signature="method#secondCellDetect#0;class#Model#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Piece.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="75" column="70" selection-start-line="75" selection-start-column="70" selection-end-line="75" selection-end-column="70" />
+        <state relative-caret-position="274">
+          <caret line="58" column="57" selection-start-line="58" selection-start-column="48" selection-end-line="58" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MoveLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="396" column="25" selection-start-line="396" selection-start-column="25" selection-end-line="396" selection-end-column="25" />
+        <state relative-caret-position="305">
+          <caret line="154" column="46" lean-forward="true" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
           <folding>
-            <element signature="e#2566#5408#0" />
             <element signature="e#5413#7348#0" />
+            <element signature="e#7379#14531#0" />
+            <element signature="e#14534#14869#0" />
             <element signature="e#13019#13276#0" />
-            <element signature="e#13282#17210#0" />
+            <element signature="e#15105#20014#0" />
+            <element signature="e#17408#17746#0" expanded="true" />
+            <element signature="e#17745#17746#0" expanded="true" />
+            <element signature="e#20024#24933#0" />
             <element signature="e#17216#17538#0" />
             <element signature="e#17544#17652#0" />
-            <element signature="e#17658#18125#0" />
+            <element signature="e#20517#20990#0" />
             <element signature="e#18131#18505#0" />
             <element signature="e#18511#19151#0" />
+            <element signature="e#24072#24575#0" />
           </folding>
         </state>
       </provider>

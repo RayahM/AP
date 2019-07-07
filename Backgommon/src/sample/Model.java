@@ -158,12 +158,12 @@ public class Model {
 
     }
 
-    public void disStroke(Cell[] board){
+    public void disStroke(Cell[] board,int currenCell){
         if(min.isEmpty()){
             if(!max.isEmpty()) {
                 System.out.println("here345");
                 for (Integer i : max.keySet()) {
-                    if(!max.get(i).isEmpty()) {
+                    if(!max.get(i).isEmpty() && i!=currenCell) {
                         board[i].pieces.get(board[i].piece_n - 1).disStroke();
                     }
                 }
@@ -182,18 +182,20 @@ public class Model {
             if(minState){
 
                 for(Integer i: min.keySet()){
-                    if(!min.get(i).isEmpty()){
+                    if(!min.get(i).isEmpty() && i!=currenCell){
                         board[i].pieces.get(board[i].piece_n - 1).disStroke();
                     }
                 }
 
             } if(max.isEmpty()){
                 for(Integer i: min.keySet()){
+                    if(i!=currenCell)
                     board[i].pieces.get(board[i].piece_n - 1).disStroke();
                 }
             } else{
 
                 for (Integer i : max.keySet()) {
+                    if(i!=currenCell)
                     board[i].pieces.get(board[i].piece_n - 1).disStroke();
                 }
             }
@@ -202,7 +204,7 @@ public class Model {
         }
     }
 
-    public void disStrokeMove2(Cell[] board, int cellNum){
+    public void disStrokeMove2(Cell[] board, int cellNum, int currentCell){
         ArrayList<Integer> arrayList;
         if(Controller.moveLevel==MoveLevel.minMax2) {
             arrayList = min.get(cellNum);
@@ -211,7 +213,9 @@ public class Model {
         }
 
             for(int i=0;i< arrayList.size();i++){
-                board[arrayList.get(i)].pieces.get(board[arrayList.get(i)].piece_n-1).disStroke();
+                if(currentCell != arrayList.get(i)) {
+                    board[arrayList.get(i)].pieces.get(board[arrayList.get(i)].piece_n - 1).disStroke();
+                }
             }
 
     }
@@ -511,6 +515,12 @@ public class Model {
                 colNum += 24;
             }
 
+             if(cellNum==dest){
+                 if(board[colNum].checkAdd(turn,0 )) {
+                     return true;
+                 }
+             }
+
             if (!(cellNum >= 12 && colNum <= 11)) {
                 if (board[cellNum].piece_n>0 && colNum == dest) {
                     if (board[colNum].checkAdd(turn, 1)) {
@@ -529,6 +539,12 @@ public class Model {
             colNum = cellNum + diceMin;
             if (colNum > 23) {
                 colNum -= 24;
+            }
+
+            if(cellNum==dest){
+                if(board[colNum].checkAdd(turn,0 )) {
+                    return true;
+                }
             }
 
             if (!((cellNum >=6 && cellNum<=11)&& colNum > 11)) {
