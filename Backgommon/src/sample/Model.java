@@ -63,6 +63,97 @@ public class Model {
 
 
 
+        } else{
+
+             if(turn){
+                    if(board[11+diceMax].piece_n>0){
+                        max.put(11+diceMax,new ArrayList<Integer>());
+                        board[11+diceMax].pieces.get(board[11+diceMax].piece_n-1).canMove(100,-1);
+
+                        if(board[11+diceMin].piece_n>0){
+                            max.get(11+diceMax).add(11+diceMin);
+                        } else {
+                            for(int i=17; i>=11 ; i--){
+                                if(board[i].piece_n>0){
+                                    max.get(11+diceMax).add(i);
+                                    break;
+                                }
+                            }
+                        }
+                    } else {
+                        int i;
+                        for (i = 17; i >= 12; i--) {
+                            if (board[i].piece_n > 0) {
+                                max.put(i, new ArrayList<Integer>());
+                                if (i - diceMax < 11) {
+                                    board[i].pieces.get(board[i].piece_n - 1).canMove(100, 0);
+
+                                } else {
+                                    board[i].pieces.get(board[i].piece_n - 1).canMove(i - diceMax, 0);
+                                }
+                                break;
+                            }
+                        }
+                        if (board[11 + diceMin].piece_n > 0) {
+                            max.get(i).add(11 + diceMin);
+                        } else {
+                            for (int j = 17; j >= 12; j--) {
+                                if (board[j].piece_n > 0) {
+                                    max.get(i).add(j);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+
+            } else {
+
+                 if(board[12-diceMax].piece_n>0){
+                     max.put(12-diceMax,new ArrayList<Integer>());
+                     board[12-diceMax].pieces.get(board[12-diceMax].piece_n-1).canMove(100,-1);
+
+                     if(board[12-diceMin].piece_n>0){
+                         max.get(12-diceMax).add(12-diceMin);
+                     } else {
+                         for(int i=6; i<=11 ; i++){
+                             if(board[i].piece_n>0){
+                                 max.get(12-diceMax).add(i);
+                                 break;
+                             }
+                         }
+                     }
+                 } else {
+                     int i;
+                     for (i = 6; i <= 11; i++) {
+                         if (board[i].piece_n > 0) {
+                             max.put(i, new ArrayList<Integer>());
+                             if (i + diceMax > 11) {
+                                 board[i].pieces.get(board[i].piece_n - 1).canMove(100, 0);
+
+                             } else {
+                                 board[i].pieces.get(board[i].piece_n - 1).canMove(i +  diceMax, 0);
+                             }
+                             break;
+                         }
+                     }
+                     if (board[12 - diceMin].piece_n > 0) {
+                         max.get(i).add(12 -  diceMin);
+                     } else {
+                         for (int j = 6; j <= 11; j++) {
+                             if (board[j].piece_n > 0) {
+                                 max.get(i).add(j);
+                                 break;
+                             }
+                         }
+                     }
+                 }
+
+
+
+             }
+
+             Controller.moveLevel = MoveLevel.maxMin1;
         }
 
     }
@@ -504,7 +595,12 @@ public class Model {
         } else{
             System.out.println("here21");
            int nextCell;
-           if(newY==0 || newX==0){
+           if(piece.possibleDestCell1==100 && newX==0){
+               move.setMovePermit(true);
+               move.setMoveType(MoveType.outMove);
+               return move;
+           }
+           else if(newY==0 || newX==0){
 
                move.setMovePermit(false);
                move.setNewX(0);
@@ -561,7 +657,12 @@ public class Model {
             return move;
         } else{
             int nextCell;
-            if(newY==0 || newX==0){
+            if(piece.possibleDestCell1==100 && newX==0){
+                move.setMovePermit(true);
+                move.setMoveType(MoveType.outMove);
+                return move;
+            }
+            else if(newY==0 || newX==0){
 
                 move.setMovePermit(false);
                 move.setNewX(0);

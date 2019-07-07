@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2fe0656-bd7f-4a98-b282-e1be193d5060" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MoveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MoveType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Piece.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -82,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/MoveType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+              <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -111,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Piece.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="79" column="43" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
+            <state relative-caret-position="333">
+              <caret line="75" column="70" selection-start-line="75" selection-start-column="70" selection-end-line="75" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -126,20 +128,40 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="118" column="41" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="41" />
+            <state relative-caret-position="190">
+              <caret line="718" selection-start-line="718" selection-end-line="718" />
+              <folding>
+                <element signature="method#randomDice#0;class#Model#0" />
+                <element signature="method#disStroke#0;class#Model#0" />
+                <element signature="method#disStrokeMove2#0;class#Model#0" />
+                <element signature="method#detectStroke#0;class#Model#0" />
+                <element signature="method#cellMoveDetectMin#0;class#Model#0" />
+                <element signature="method#cellMoveDetectMax#0;class#Model#0" />
+                <element signature="method#secondCellDetect#0;class#Model#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4134">
-              <caret line="378" column="29" selection-start-line="378" selection-start-column="20" selection-end-line="378" selection-end-column="29" />
+            <state relative-caret-position="357">
+              <caret line="396" column="25" selection-start-line="396" selection-start-column="25" selection-end-line="396" selection-end-column="25" />
+              <folding>
+                <element signature="e#2566#5408#0" />
+                <element signature="e#5413#7348#0" />
+                <element signature="e#13019#13276#0" />
+                <element signature="e#13282#17210#0" />
+                <element signature="e#17216#17538#0" />
+                <element signature="e#17544#17652#0" />
+                <element signature="e#17658#18125#0" />
+                <element signature="e#18131#18505#0" />
+                <element signature="e#18511#19151#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -175,11 +197,11 @@
         <option value="$PROJECT_DIR$/src/sample/ControllerPieceSelector.java" />
         <option value="$PROJECT_DIR$/src/sample/Cell.java" />
         <option value="$PROJECT_DIR$/src/sample/Move.java" />
-        <option value="$PROJECT_DIR$/src/sample/MoveType.java" />
         <option value="$PROJECT_DIR$/src/sample/MoveLevel.java" />
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
-        <option value="$PROJECT_DIR$/src/sample/Piece.java" />
+        <option value="$PROJECT_DIR$/src/sample/MoveType.java" />
         <option value="$PROJECT_DIR$/src/sample/Model.java" />
+        <option value="$PROJECT_DIR$/src/sample/Piece.java" />
+        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
   </component>
@@ -332,12 +354,12 @@
       <workItem from="1562383475318" duration="32614000" />
       <workItem from="1562435905219" duration="6889000" />
       <workItem from="1562467945032" duration="44709000" />
-      <workItem from="1562519411666" duration="4031000" />
+      <workItem from="1562519411666" duration="9031000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100561000" />
+    <option name="totallyTimeSpent" value="105561000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -553,13 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MoveType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ControllerScene1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -584,24 +599,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/MoveType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4134">
-          <caret line="378" column="29" selection-start-line="378" selection-start-column="20" selection-end-line="378" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="79" column="43" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
+        <state relative-caret-position="51">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="118" column="41" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="41" />
+        <state relative-caret-position="190">
+          <caret line="718" selection-start-line="718" selection-end-line="718" />
+          <folding>
+            <element signature="method#randomDice#0;class#Model#0" />
+            <element signature="method#disStroke#0;class#Model#0" />
+            <element signature="method#disStrokeMove2#0;class#Model#0" />
+            <element signature="method#detectStroke#0;class#Model#0" />
+            <element signature="method#cellMoveDetectMin#0;class#Model#0" />
+            <element signature="method#cellMoveDetectMax#0;class#Model#0" />
+            <element signature="method#secondCellDetect#0;class#Model#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="75" column="70" selection-start-line="75" selection-start-column="70" selection-end-line="75" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="396" column="25" selection-start-line="396" selection-start-column="25" selection-end-line="396" selection-end-column="25" />
+          <folding>
+            <element signature="e#2566#5408#0" />
+            <element signature="e#5413#7348#0" />
+            <element signature="e#13019#13276#0" />
+            <element signature="e#13282#17210#0" />
+            <element signature="e#17216#17538#0" />
+            <element signature="e#17544#17652#0" />
+            <element signature="e#17658#18125#0" />
+            <element signature="e#18131#18505#0" />
+            <element signature="e#18511#19151#0" />
+          </folding>
         </state>
       </provider>
     </entry>

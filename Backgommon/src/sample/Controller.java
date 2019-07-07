@@ -56,7 +56,7 @@ public class Controller implements Initializable {
     static int player2TimeLimit;
     static int roundsOfPlay;
     static LinkedHashMap<Integer, ArrayList<Integer>> hintMove= new LinkedHashMap<Integer, ArrayList<Integer>>();
-    private boolean turn = false;
+    static boolean turn = false;
     private ImageView diceI1;
     private ImageView diceI2;
     static MoveLevel moveLevel;
@@ -238,155 +238,164 @@ public class Controller implements Initializable {
    Piece piece = new Piece(type,x,y,num,board_cell);
 
    piece.setOnMouseReleased(e -> {
-     layoutx=piece.getLayoutX();
+       layoutx = piece.getLayoutX();
 
-      layouty=piece.getLayoutY();
-       Move  move;
+       layouty = piece.getLayoutY();
+       Move move;
+       if (moveLevel != MoveLevel.done && piece.type==turn) {
 
-      if(!(moveLevel==MoveLevel.minMax2) && !(moveLevel==MoveLevel.maxMin2)){
-          System.out.println(turn);
-       move =  model.checkMove1(getDice1(),getDice2(),turn,findx(layoutx),findy(layouty),board_cell,piece);
+           if (!(moveLevel == MoveLevel.minMax2) && !(moveLevel == MoveLevel.maxMin2)) {
+               System.out.println(turn);
+               move = model.checkMove1(getDice1(), getDice2(), turn, findx(layoutx), findy(layouty), board_cell, piece);
 
-      if(!move.isMovePermit()) {
-          System.out.println("here2");
-          piece.move(move.getNewX(), move.getNewY(), board_cell);
-      } else {
-          undo[0] = move.getCurrentCell();
-          undo[1] = move.getNextCell();
-          if (move.getMoveType() == MoveType.normalMove) {
-              boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
-              piece.currentCell = move.getNextCell();
-              board_cell[move.getCurrentCell()].removePiece();
-              piece.move(move.getNewX(), move.getNewY(), board_cell);
-
-
-          } else {
-              int outX = 305;
-              int outY = turn ? 350:250;
-              board_cell[move.getNextCell()].pieces.get(0).relocate(outX,outY);
-              boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
-              piece.currentCell = move.getNextCell();
-              piece.move(move.getNewX(), move.getNewY(), board_cell);
-              if(turn){
-                  darkKilled ++;
-              }else{
-                  lightKilled++;
-              }
+               if (!move.isMovePermit()) {
+                   System.out.println("here2");
+                   piece.move(move.getNewX(), move.getNewY(), board_cell);
+               } else {
+                   undo[0] = move.getCurrentCell();
+                   undo[1] = move.getNextCell();
+                   if (move.getMoveType() == MoveType.normalMove) {
+                       boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
+                       piece.currentCell = move.getNextCell();
+                       board_cell[move.getCurrentCell()].removePiece();
+                       piece.move(move.getNewX(), move.getNewY(), board_cell);
 
 
-
-          }
-
-          if(moveLevel==MoveLevel.max ){
-              if(dice1>dice2){
-                  grayDice(0);
-              }else {
-                  grayDice(1);
-              }
-              moveLevel = MoveLevel.done;
-              piece.disStroke();
-              changeTurn();
-          } else if(moveLevel==MoveLevel.min){
-              if(dice1<dice2){
-                  grayDice(0);
-              }else{
-                  grayDice(1);
-              }
-              moveLevel = MoveLevel.done;
-              piece.disStroke();
-              changeTurn();
-          } else if((moveLevel==MoveLevel.minMax1 || moveLevel==MoveLevel.maxMin1) && move.getNextCell()==piece.possileDestCell2){
-             grayDice(2);
-              moveLevel = MoveLevel.done;
-              piece.disStroke();
-              changeTurn();
-          } else if(moveLevel==MoveLevel.maxMin1){
-              moveLevel = MoveLevel.maxMin2;
-              piece.disStroke();
-              if(dice1>dice2) {
-                  grayDice(0);
-                  model.move2Stroke(undo[0], dice2, board_cell,turn);
-              }else {
-                  grayDice(1);
-                  model.move2Stroke(undo[0], dice1 , board_cell,turn);
-              }
-          } else if(moveLevel == MoveLevel.minMax1){
-              piece.disStroke();
-              moveLevel = MoveLevel.minMax2;
-              if(dice1<dice2) {
-                  grayDice(0);
-                  model.move2Stroke(undo[0], dice2, board_cell,turn);
-              }else {
-                  grayDice(1);
-                  model.move2Stroke(undo[0], dice1, board_cell,turn);
-              }
-          }
-      }
-
-      } else{
-          int diceMax = dice1 > dice2 ? dice1 : dice2;
-          int diceMin = dice1 < dice2 ? dice1 : dice2;
-          System.out.println(undo[0]);
-          if(moveLevel==MoveLevel.maxMin2) {
-              move = model.checkMove2(diceMin, turn, findx(layoutx), findy(layouty), board_cell, piece, undo[0]);
-
-          }else{
-              move = model.checkMove2(diceMax, turn, findx(layoutx), findy(layouty), board_cell, piece, undo[0]);
-          }
-
-          if(!move.isMovePermit()) {
-              System.out.println("here");
-              piece.move(move.getNewX(), move.getNewY(), board_cell);
-          } else {
-              System.out.println(moveLevel);
-              undo[2] = move.getCurrentCell();
-              undo[3] = move.getNextCell();
-              if (move.getMoveType() == MoveType.normalMove) {
-                  boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
-                  piece.currentCell = move.getNextCell();
-                  board_cell[move.getCurrentCell()].removePiece();
-                  piece.move(move.getNewX(), move.getNewY(), board_cell);
+                   } else if (move.getMoveType() == MoveType.outMove) {
+                       board_cell[move.getCurrentCell()].removePiece();
+                       boardPane.getChildren().remove(piece);
+                   } else {
+                       int outX = 305;
+                       int outY = turn ? 350 : 250;
+                       board_cell[move.getNextCell()].pieces.get(0).relocate(outX, outY);
+                       boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
+                       piece.currentCell = move.getNextCell();
+                       piece.move(move.getNewX(), move.getNewY(), board_cell);
+                       if (turn) {
+                           darkKilled++;
+                       } else {
+                           lightKilled++;
+                       }
 
 
-              } else {
-                  int outX = 305;
-                  int outY = turn ? 350 : 250;
-                  board_cell[move.getNextCell()].pieces.get(0).relocate(outX, outY);
-                  boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
-                  piece.currentCell = move.getNextCell();
-                  piece.move(move.getNewX(), move.getNewY(), board_cell);
-                  if (turn) {
-                      darkKilled++;
-                  } else {
-                      lightKilled++;
-                  }
+                   }
+
+                   if (moveLevel == MoveLevel.max) {
+                       if (dice1 > dice2) {
+                           grayDice(0);
+                       } else {
+                           grayDice(1);
+                       }
+                       moveLevel = MoveLevel.done;
+                       piece.disStroke();
+                       changeTurn();
+                   } else if (moveLevel == MoveLevel.min) {
+                       if (dice1 < dice2) {
+                           grayDice(0);
+                       } else {
+                           grayDice(1);
+                       }
+                       moveLevel = MoveLevel.done;
+                       piece.disStroke();
+                       changeTurn();
+                   } else if ((moveLevel == MoveLevel.minMax1 || moveLevel == MoveLevel.maxMin1) && move.getNextCell() == piece.possileDestCell2) {
+                       grayDice(2);
+                       moveLevel = MoveLevel.done;
+                       piece.disStroke();
+                       changeTurn();
+                   } else if (moveLevel == MoveLevel.maxMin1) {
+                       moveLevel = MoveLevel.maxMin2;
+                       piece.disStroke();
+                       if (dice1 > dice2) {
+                           grayDice(0);
+                           model.move2Stroke(undo[0], dice2, board_cell, turn);
+                       } else {
+                           grayDice(1);
+                           model.move2Stroke(undo[0], dice1, board_cell, turn);
+                       }
+                   } else if (moveLevel == MoveLevel.minMax1) {
+                       piece.disStroke();
+                       moveLevel = MoveLevel.minMax2;
+                       if (dice1 < dice2) {
+                           grayDice(0);
+                           model.move2Stroke(undo[0], dice2, board_cell, turn);
+                       } else {
+                           grayDice(1);
+                           model.move2Stroke(undo[0], dice1, board_cell, turn);
+                       }
+                   }
+               }
+
+           } else {
+               int diceMax = dice1 > dice2 ? dice1 : dice2;
+               int diceMin = dice1 < dice2 ? dice1 : dice2;
+               System.out.println(undo[0]);
+               if (moveLevel == MoveLevel.maxMin2) {
+                   move = model.checkMove2(diceMin, turn, findx(layoutx), findy(layouty), board_cell, piece, undo[0]);
+
+               } else {
+                   move = model.checkMove2(diceMax, turn, findx(layoutx), findy(layouty), board_cell, piece, undo[0]);
+               }
+
+               if (!move.isMovePermit()) {
+                   System.out.println("here");
+                   piece.move(move.getNewX(), move.getNewY(), board_cell);
+               } else {
+                   System.out.println(moveLevel);
+                   undo[2] = move.getCurrentCell();
+                   undo[3] = move.getNextCell();
+                   if (move.getMoveType() == MoveType.normalMove) {
+                       boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
+                       piece.currentCell = move.getNextCell();
+                       board_cell[move.getCurrentCell()].removePiece();
+                       piece.move(move.getNewX(), move.getNewY(), board_cell);
 
 
-              }
-              if(moveLevel==MoveLevel.maxMin2){
-                  if(dice1<dice2){
-                      grayDice(0);
-                  }else {
-                      grayDice(1);
-                  }
-              }else{
-                  if(dice1>dice2){
-                      grayDice(0);
-                  }else {
-                      grayDice(1);
-                  }
-              }
-              piece.disStroke();
-              moveLevel = MoveLevel.done;
-              System.out.println(moveLevel);
-              changeTurn();
+                   } else if (move.getMoveType() == MoveType.outMove) {
+                       board_cell[move.getCurrentCell()].removePiece();
+                       boardPane.getChildren().remove(piece);
+                   } else {
+                       int outX = 305;
+                       int outY = turn ? 350 : 250;
+                       board_cell[move.getNextCell()].pieces.get(0).relocate(outX, outY);
+                       boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
+                       piece.currentCell = move.getNextCell();
+                       piece.move(move.getNewX(), move.getNewY(), board_cell);
+                       if (turn) {
+                           darkKilled++;
+                       } else {
+                           lightKilled++;
+                       }
 
 
-          }
+                   }
+                   if (moveLevel == MoveLevel.maxMin2) {
+                       if (dice1 < dice2) {
+                           grayDice(0);
+                       } else {
+                           grayDice(1);
+                       }
+                   } else {
+                       if (dice1 > dice2) {
+                           grayDice(0);
+                       } else {
+                           grayDice(1);
+                       }
+                   }
+                   piece.disStroke();
+                   moveLevel = MoveLevel.done;
+                   System.out.println(moveLevel);
+                   changeTurn();
 
 
-      }
+               }
 
+
+           }
+
+       } else{
+           piece.move(0,0, board_cell);
+       }
    });
 
    return piece;

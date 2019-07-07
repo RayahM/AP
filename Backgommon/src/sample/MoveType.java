@@ -1,5 +1,5 @@
 package sample;
 
 public enum MoveType {
-    normalMove,attack,noMove;
+    normalMove,attack,noMove,outMove;
 }
