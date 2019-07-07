@@ -44,25 +44,32 @@ public class Cell {
 
     }
 
-    public boolean checkAdd (boolean type){
-        if(piece_n==0){
+    public boolean checkAdd (boolean type, int offset){
+        if(offset==0) {
+            if (piece_n == 0) {
+
+                return true;
+
+            } else if (type == this.type) {
+
+                return true;
+            } else if (piece_n == 1) {
+
+                return true;
+            } else {
+                return false;
+            }
+        } else {
 
             return true;
+
         }
 
-        else if(type==this.type){
+    }
 
-            return true;
-        }
-        else if( piece_n==1){
-
-            return true;
-        }
-
-        else{
-            return false;
-        }
-
+    public void removePiece(){
+        pieces.remove(piece_n-1);
+        piece_n--;
     }
 
     public void move_from (Piece piece){

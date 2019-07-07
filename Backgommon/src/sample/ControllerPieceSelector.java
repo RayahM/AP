@@ -37,15 +37,22 @@ public class ControllerPieceSelector {
     Model model = new Model();
     private Stage lastStage;
 
-
-
-
-    public Stage getLastStage() {
-        return lastStage;
+    private String playerTime = "1";
+    private String rounds = "1";
+    public void setPlayerTime(String playerTime) {
+        this.playerTime = playerTime;
     }
 
-    public void setLastStage(Stage lastStage) {
-        this.lastStage = lastStage;
+    public String getPlayerTime() {
+        return playerTime;
+    }
+
+    public void setRounds(String rounds) {
+        this.rounds = rounds;
+    }
+
+    public String getRounds() {
+        return rounds;
     }
 
     public int getDice1() {
@@ -149,11 +156,13 @@ public class ControllerPieceSelector {
 
     }
 
-    public void initValue(String user1Name, String user2Name){
+    public void initValue(String user1Name, String user2Name, String playerTime, String rounds){
 
 
         this.player1Name.setText(user1Name);
         this.player2Name.setText(user2Name);
+        this.playerTime = playerTime;
+        this.rounds = rounds;
 
     }
 
@@ -166,7 +175,8 @@ public class ControllerPieceSelector {
             loader.setLocation(getClass().getResource("Board.fxml"));
             Parent newGame = loader.load() ;
             Controller controller = loader.getController();
-            controller.turnPlay(getDice1(),getDice2(),player1Name.toString(),player2Name.toString(),true);
+            controller.initValue(playerTime,rounds,getDice1(),getDice2(),player1Name.getText(),player2Name.getText());
+            controller.turnPlay(false);
             Scene newScene = new Scene(newGame);
             Stage newStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             newStage.setScene(newScene);
@@ -175,8 +185,19 @@ public class ControllerPieceSelector {
     }
 
     @FXML
-    void lightMode(MouseEvent event) {
-
+    void lightMode(MouseEvent event) throws IOException{
+        if(diceRoll){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Board.fxml"));
+            Parent newGame = loader.load() ;
+            Controller controller = loader.getController();
+            controller.initValue(playerTime,rounds,getDice1(),getDice2(),player1Name.getText(),player2Name.getText());
+            controller.turnPlay(true);
+            Scene newScene = new Scene(newGame);
+            Stage newStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            newStage.setScene(newScene);
+            newStage.show();
+        }
     }
 
 

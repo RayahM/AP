@@ -85,8 +85,7 @@ public class ControllerScene1 implements Initializable {
         loader.setLocation(getClass().getResource("pieceSelector.fxml"));
         Parent newGame = loader.load() ;
         ControllerPieceSelector controllerPieceSelector = loader.getController();
-        controllerPieceSelector.initValue(getUser1Name(),getUser2Name());
-        controllerPieceSelector.setLastStage(getStage());
+        controllerPieceSelector.initValue(getUser1Name(),getUser2Name(),getPlayerTime(),getRounds());
         Scene newScene = new Scene(newGame);
         Stage newStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         newStage.setScene(newScene);

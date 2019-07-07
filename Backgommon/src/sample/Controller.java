@@ -34,7 +34,7 @@ public class Controller implements Initializable {
    static double annotation_y=-5;
    static double middle = 40;
    static double offset_y = 548;
-    Model model = new Model();
+    static Model model = new Model();
 
 
     double layoutx;
@@ -57,6 +57,30 @@ public class Controller implements Initializable {
     static int roundsOfPlay;
     static LinkedHashMap<Integer, ArrayList<Integer>> hintMove= new LinkedHashMap<Integer, ArrayList<Integer>>();
     private boolean turn = false;
+    private ImageView diceI1;
+    private ImageView diceI2;
+    static MoveLevel moveLevel;
+    private int lightKilled=0;
+    private int darkKilled=0;
+    private int lightDice=0;
+    private int darkDice=0;
+    static int[] undo = new int[4];
+
+    public void setPlayer1User(String player1User) {
+        this.player1User = player1User;
+    }
+
+    public String getPlayer1User() {
+        return player1User;
+    }
+
+    public void setPlayer2User(String player2User) {
+        this.player2User = player2User;
+    }
+
+    public String getPlayer2User() {
+        return player2User;
+    }
 
     public int getDice1() {
         return dice1;
@@ -76,6 +100,8 @@ public class Controller implements Initializable {
 
     @FXML
     void rollDice(MouseEvent event) {
+
+        boardPane.getChildren().removeAll(diceI1,diceI2);
         ImageView imageViewDice1 = new ImageView(model.getImage("spritesheet.png"));
         imageViewDice1.setTranslateX(350);
         imageViewDice1.setTranslateY(260);
@@ -118,13 +144,20 @@ public class Controller implements Initializable {
                 boardPane.getChildren().remove(imageViewDice2);
                 setDice1(model.randomDice());
                 setDice2(model.randomDice());
-                ImageView diceI1 = new ImageView(model.getImage("Dice_"+getDice1()+".png"));
+                if(turn){
+                    lightDice += getDice1()+getDice2();
+                }else{
+                    darkDice += getDice1()+getDice2();
+                }
+                diceI1 = new ImageView(model.getImage("Dice_"+getDice1()+".png"));
                 diceI1.setTranslateX(350);
                 diceI1.setTranslateY(260);
-                ImageView diceI2 = new ImageView(model.getImage("Dice_"+getDice2()+".png"));
+                diceI2 = new ImageView(model.getImage("Dice_"+getDice2()+".png"));
                 diceI2.setTranslateX(440);
                 diceI2.setTranslateY(260);
                 boardPane.getChildren().addAll(diceI1,diceI2);
+                model.moveDetector(dice1,dice2,turn,board_cell);
+
             }
         });
         boardPane.getChildren().addAll(imageViewDice1,imageViewDice2);
@@ -205,8 +238,147 @@ public class Controller implements Initializable {
      layoutx=piece.getLayoutX();
 
       layouty=piece.getLayoutY();
+       Move  move;
 
-      piece.move(findx(layoutx),findy(layouty),board_cell);
+      if(!(moveLevel==MoveLevel.minMax2) && !(moveLevel==MoveLevel.maxMin2)){
+       move =  model.checkMove1(getDice1(),getDice2(),turn,findx(layoutx),findy(layouty),board_cell,piece);
+
+      if(!move.isMovePermit()) {
+          piece.move(move.getNewX(), move.getNewY(), board_cell);
+      } else {
+          undo[0] = move.getCurrentCell();
+          undo[1] = move.getNextCell();
+          if (move.getMoveType() == MoveType.normalMove) {
+              boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
+              piece.currentCell = move.getNextCell();
+              board_cell[move.getCurrentCell()].removePiece();
+              piece.move(move.getNewX(), move.getNewY(), board_cell);
+
+
+          } else {
+              int outX = 305;
+              int outY = turn ? 350:250;
+              board_cell[move.getNextCell()].pieces.get(0).relocate(outX,outY);
+              boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
+              piece.currentCell = move.getNextCell();
+              piece.move(move.getNewX(), move.getNewY(), board_cell);
+              if(turn){
+                  darkKilled ++;
+              }else{
+                  lightKilled++;
+              }
+
+
+
+          }
+
+          if(moveLevel==MoveLevel.max ){
+              if(dice1>dice2){
+                  grayDice(0);
+              }else {
+                  grayDice(1);
+              }
+              moveLevel = MoveLevel.done;
+              piece.disStroke();
+              changeTurn();
+          } else if(moveLevel==MoveLevel.min){
+              if(dice1<dice2){
+                  grayDice(0);
+              }else{
+                  grayDice(1);
+              }
+              moveLevel = MoveLevel.done;
+              piece.disStroke();
+              changeTurn();
+          } else if((moveLevel==MoveLevel.minMax1 || moveLevel==MoveLevel.maxMin1) && move.getNextCell()==piece.possileDestCell2){
+             grayDice(2);
+              moveLevel = MoveLevel.done;
+              piece.disStroke();
+              changeTurn();
+          } else if(moveLevel==MoveLevel.maxMin1){
+              moveLevel = MoveLevel.maxMin2;
+              piece.disStroke();
+              if(dice1>dice2) {
+                  grayDice(0);
+                  model.move2Stroke(undo[0], dice2, board_cell,turn);
+              }else {
+                  grayDice(1);
+                  model.move2Stroke(undo[0], dice1 , board_cell,turn);
+              }
+          } else if(moveLevel == MoveLevel.minMax1){
+              piece.disStroke();
+              moveLevel = MoveLevel.minMax2;
+              if(dice1<dice2) {
+                  grayDice(0);
+                  model.move2Stroke(undo[0], dice2, board_cell,turn);
+              }else {
+                  grayDice(1);
+                  model.move2Stroke(undo[0], dice1, board_cell,turn);
+              }
+          }
+      }
+
+      } else{
+          int diceMax = dice1 > dice2 ? dice1 : dice2;
+          int diceMin = dice1 < dice2 ? dice1 : dice2;
+          if(moveLevel==MoveLevel.maxMin2) {
+              move = model.checkMove2(diceMin, turn, findx(layoutx), findy(layouty), board_cell, piece, undo[0]);
+
+          }else{
+              move = model.checkMove2(diceMax, turn, findx(layoutx), findy(layouty), board_cell, piece, undo[0]);
+          }
+
+          if(!move.isMovePermit()) {
+              piece.move(move.getNewX(), move.getNewY(), board_cell);
+          } else {
+              System.out.println(moveLevel);
+              undo[2] = move.getCurrentCell();
+              undo[3] = move.getNextCell();
+              if (move.getMoveType() == MoveType.normalMove) {
+                  boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
+                  piece.currentCell = move.getNextCell();
+                  board_cell[move.getCurrentCell()].removePiece();
+                  piece.move(move.getNewX(), move.getNewY(), board_cell);
+
+
+              } else {
+                  int outX = 305;
+                  int outY = turn ? 350 : 250;
+                  board_cell[move.getNextCell()].pieces.get(0).relocate(outX, outY);
+                  boolean action = board_cell[move.getNextCell()].addPiece(turn, piece);
+                  piece.currentCell = move.getNextCell();
+                  piece.move(move.getNewX(), move.getNewY(), board_cell);
+                  if (turn) {
+                      darkKilled++;
+                  } else {
+                      lightKilled++;
+                  }
+
+
+              }
+              if(moveLevel==MoveLevel.maxMin2){
+                  if(dice1<dice2){
+                      grayDice(0);
+                  }else {
+                      grayDice(1);
+                  }
+              }else{
+                  if(dice1>dice2){
+                      grayDice(0);
+                  }else {
+                      grayDice(1);
+                  }
+              }
+              piece.disStroke();
+              moveLevel = MoveLevel.done;
+              System.out.println(moveLevel);
+              changeTurn();
+
+
+          }
+
+
+      }
 
    });
 
@@ -287,7 +459,7 @@ public class Controller implements Initializable {
         boardPane.getChildren().add(stackMinute[0]);
 
         Text[] gameTime = new Text[2];
-        gameTime[0] = new Text((player1User+" Time:"));
+        gameTime[0] = new Text((getPlayer1User()));
         gameTime[0].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
         gameTime[0].setFill(Color.GOLD);
         gameTime[0].setTranslateX(637);
@@ -324,7 +496,7 @@ public class Controller implements Initializable {
         stackMinute[1].relocate(740,350);
         boardPane.getChildren().add(stackMinute[1]);
 
-        gameTime[1] = new Text(player2User+" Time:");
+        gameTime[1] = new Text(getPlayer2User());
         gameTime[1].setFont(Font.loadFont(getClass().getResource("Penumbra-HalfSerif-Std_35114.ttf").toExternalForm(),14));
         gameTime[1].setFill(Color.GOLD);
         gameTime[1].setTranslateX(637);
@@ -335,8 +507,63 @@ public class Controller implements Initializable {
 
     }
 
-    public void turnPlay(int dice1, int dice2, String player1User, String player2User, boolean turn ){
+    public void turnPlay( boolean turn ){
+
+
+            if(turn){
+                lightDice += getDice1()+getDice2();
+            }else{
+                darkDice += getDice1()+getDice2();
+            }
             model.moveDetector(dice1,dice2,turn,board_cell);
+            initializeClk();
+
+    }
+
+    public void changeTurn(){
+        turn = !turn;
+        model.max.clear();
+        model.min.clear();
+
+    }
+
+    public void initValue(String playerTime, String rounds,int dice1 , int dice2 , String player1User, String player2User){
+        this.setPlayer1User(player1User);
+        this.setPlayer2User(player2User);
+        this.setDice1(dice1);
+        this.setDice2(dice2);
+        showDice();
+        this.roundsOfPlay = Integer.parseInt(rounds);
+        this.player1TimeLimit = Integer.parseInt(playerTime);
+        this.player2TimeLimit = Integer.parseInt(playerTime);
+    }
+
+    public void showDice(){
+        diceI1 = new ImageView(model.getImage("Dice_"+getDice1()+".png"));
+        diceI1.setTranslateX(350);
+        diceI1.setTranslateY(260);
+        diceI2 = new ImageView(model.getImage("Dice_"+getDice2()+".png"));
+        diceI2.setTranslateX(440);
+        diceI2.setTranslateY(260);
+        boardPane.getChildren().addAll(diceI1,diceI2);
+    }
+
+    public void grayDice(int type){
+
+        if(type==0 || type==2){
+            boardPane.getChildren().remove(diceI1);
+            diceI1 = new ImageView(model.getImage("Dice_"+getDice1()+"b.png"));
+            diceI1.setTranslateX(350);
+            diceI1.setTranslateY(260);
+            boardPane.getChildren().add(diceI1);
+        }
+        if(type==1 || type==2){
+            boardPane.getChildren().remove(diceI2);
+            diceI2 = new ImageView(model.getImage("Dice_"+getDice2()+"b.png"));
+            diceI2.setTranslateX(440);
+            diceI2.setTranslateY(260);
+            boardPane.getChildren().add(diceI2);
+        }
     }
 
 }
