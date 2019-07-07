@@ -478,17 +478,19 @@ public class Model {
     public Move checkMove1(int dice1,int dice2,boolean turn,int newX,int newY, Cell[] board, Piece piece){
 
         Move move = new Move();
-
+        int diceMax = dice1 > dice2 ? dice1 : dice2;
+        int diceMin = dice1 < dice2 ? dice1 : dice2;
         if(!piece.canSelect){
             move.setMovePermit(false);
             move.setNewX(0);
             move.setNewY(0);
+            detectStroke(board,diceMax,diceMin,turn);
             return move;
         } else{
+            System.out.println("here21");
            int nextCell;
            if(newY==0 || newX==0){
-               int diceMax = dice1 > dice2 ? dice1 : dice2;
-               int diceMin = dice1 < dice2 ? dice1 : dice2;
+
                move.setMovePermit(false);
                move.setNewX(0);
                move.setNewY(0);
@@ -499,6 +501,8 @@ public class Model {
             } else {
                nextCell = newX-1;
            }
+            System.out.println(piece.possibleDestCell1);
+            System.out.println(piece.possileDestCell2);
 
            if(nextCell == piece.possibleDestCell1 || nextCell == piece.possileDestCell2){
                move.setMovePermit(true);
@@ -515,8 +519,7 @@ public class Model {
                move.setNextCell(nextCell);
                 return move;
            } else{
-               int diceMax = dice1 > dice2 ? dice1 : dice2;
-               int diceMin = dice1 < dice2 ? dice1 : dice2;
+
                move.setMovePermit(false);
                move.setNewX(0);
                move.setNewY(0);
@@ -539,6 +542,7 @@ public class Model {
             move.setMovePermit(false);
             move.setNewX(0);
             move.setNewY(0);
+            move2Stroke(cell,dice,board,turn);
             return move;
         } else{
             int nextCell;

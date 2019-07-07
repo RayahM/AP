@@ -64,6 +64,7 @@ public class Controller implements Initializable {
     private int darkKilled=0;
     private int lightDice=0;
     private int darkDice=0;
+    private boolean lockDice = false;
     static int[] undo = new int[4];
 
     public void setPlayer1User(String player1User) {
@@ -100,67 +101,69 @@ public class Controller implements Initializable {
 
     @FXML
     void rollDice(MouseEvent event) {
+        if(!lockDice) {
+            boardPane.getChildren().removeAll(diceI1, diceI2);
+            ImageView imageViewDice1 = new ImageView(model.getImage("spritesheet.png"));
+            imageViewDice1.setTranslateX(350);
+            imageViewDice1.setTranslateY(260);
 
-        boardPane.getChildren().removeAll(diceI1,diceI2);
-        ImageView imageViewDice1 = new ImageView(model.getImage("spritesheet.png"));
-        imageViewDice1.setTranslateX(350);
-        imageViewDice1.setTranslateY(260);
+            ImageView imageViewDice2 = new ImageView(model.getImage("spritesheetR.png"));
+            imageViewDice2.setTranslateX(440);
+            imageViewDice2.setTranslateY(260);
+            imageViewDice1.setViewport(new Rectangle2D(spriteOffsetX, spriteOffsetY, spriteWidth, spriteHeight));
+            imageViewDice2.setViewport(new Rectangle2D(spriteOffsetX, spriteOffsetY, spriteWidth, spriteHeight));
+            Animation animationDice1 = new SpriteAnimation(
+                    imageViewDice1,
+                    Duration.millis(1500),
+                    spriteCounts,
+                    spriteColumns,
+                    spriteOffsetX,
+                    spriteOffsetY,
+                    spriteWidth,
+                    spriteHeight
+            );
 
-        ImageView imageViewDice2 = new ImageView(model.getImage("spritesheetR.png"));
-        imageViewDice2.setTranslateX(440);
-        imageViewDice2.setTranslateY(260);
-        imageViewDice1.setViewport(new Rectangle2D(spriteOffsetX,spriteOffsetY,spriteWidth,spriteHeight));
-        imageViewDice2.setViewport(new Rectangle2D(spriteOffsetX,spriteOffsetY,spriteWidth,spriteHeight));
-        Animation animationDice1 = new SpriteAnimation(
-                imageViewDice1,
-                Duration.millis(1500),
-                spriteCounts,
-                spriteColumns,
-                spriteOffsetX,
-                spriteOffsetY,
-                spriteWidth,
-                spriteHeight
-        );
+            Animation animationDice2 = new SpriteAnimation(
+                    imageViewDice2,
+                    Duration.millis(1500),
+                    spriteCounts,
+                    spriteColumns,
+                    spriteOffsetX,
+                    spriteOffsetY,
+                    spriteWidth,
+                    spriteHeight
+            );
 
-        Animation animationDice2 = new SpriteAnimation(
-                imageViewDice2,
-                Duration.millis(1500),
-                spriteCounts,
-                spriteColumns,
-                spriteOffsetX,
-                spriteOffsetY,
-                spriteWidth,
-                spriteHeight
-        );
+            animationDice1.setCycleCount(1);
+            animationDice1.play();
+            animationDice2.setCycleCount(1);
+            animationDice2.play();
+            animationDice1.setOnFinished(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    boardPane.getChildren().remove(imageViewDice1);
+                    boardPane.getChildren().remove(imageViewDice2);
+                    setDice1(model.randomDice());
+                    setDice2(model.randomDice());
+                    if (turn) {
+                        lightDice += getDice1() + getDice2();
+                    } else {
+                        darkDice += getDice1() + getDice2();
+                    }
+                    diceI1 = new ImageView(model.getImage("Dice_" + getDice1() + ".png"));
+                    diceI1.setTranslateX(350);
+                    diceI1.setTranslateY(260);
+                    diceI2 = new ImageView(model.getImage("Dice_" + getDice2() + ".png"));
+                    diceI2.setTranslateX(440);
+                    diceI2.setTranslateY(260);
+                    boardPane.getChildren().addAll(diceI1, diceI2);
+                    model.moveDetector(dice1, dice2, turn, board_cell);
 
-        animationDice1.setCycleCount(1);
-        animationDice1.play();
-        animationDice2.setCycleCount(1);
-        animationDice2.play();
-        animationDice1.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                boardPane.getChildren().remove(imageViewDice1);
-                boardPane.getChildren().remove(imageViewDice2);
-                setDice1(model.randomDice());
-                setDice2(model.randomDice());
-                if(turn){
-                    lightDice += getDice1()+getDice2();
-                }else{
-                    darkDice += getDice1()+getDice2();
                 }
-                diceI1 = new ImageView(model.getImage("Dice_"+getDice1()+".png"));
-                diceI1.setTranslateX(350);
-                diceI1.setTranslateY(260);
-                diceI2 = new ImageView(model.getImage("Dice_"+getDice2()+".png"));
-                diceI2.setTranslateX(440);
-                diceI2.setTranslateY(260);
-                boardPane.getChildren().addAll(diceI1,diceI2);
-                model.moveDetector(dice1,dice2,turn,board_cell);
-
-            }
-        });
-        boardPane.getChildren().addAll(imageViewDice1,imageViewDice2);
+            });
+            lockDice = true;
+            boardPane.getChildren().addAll(imageViewDice1, imageViewDice2);
+        }
     }
 
    @Override
@@ -241,9 +244,11 @@ public class Controller implements Initializable {
        Move  move;
 
       if(!(moveLevel==MoveLevel.minMax2) && !(moveLevel==MoveLevel.maxMin2)){
+          System.out.println(turn);
        move =  model.checkMove1(getDice1(),getDice2(),turn,findx(layoutx),findy(layouty),board_cell,piece);
 
       if(!move.isMovePermit()) {
+          System.out.println("here2");
           piece.move(move.getNewX(), move.getNewY(), board_cell);
       } else {
           undo[0] = move.getCurrentCell();
@@ -321,6 +326,7 @@ public class Controller implements Initializable {
       } else{
           int diceMax = dice1 > dice2 ? dice1 : dice2;
           int diceMin = dice1 < dice2 ? dice1 : dice2;
+          System.out.println(undo[0]);
           if(moveLevel==MoveLevel.maxMin2) {
               move = model.checkMove2(diceMin, turn, findx(layoutx), findy(layouty), board_cell, piece, undo[0]);
 
@@ -329,6 +335,7 @@ public class Controller implements Initializable {
           }
 
           if(!move.isMovePermit()) {
+              System.out.println("here");
               piece.move(move.getNewX(), move.getNewY(), board_cell);
           } else {
               System.out.println(moveLevel);
@@ -508,8 +515,8 @@ public class Controller implements Initializable {
     }
 
     public void turnPlay( boolean turn ){
-
-
+            this.turn = turn;
+            lockDice = true;
             if(turn){
                 lightDice += getDice1()+getDice2();
             }else{
@@ -524,6 +531,7 @@ public class Controller implements Initializable {
         turn = !turn;
         model.max.clear();
         model.min.clear();
+        lockDice = false;
 
     }
 
