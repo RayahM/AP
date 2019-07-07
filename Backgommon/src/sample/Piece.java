@@ -74,7 +74,11 @@ public class Piece extends StackPane {
                mousex=e.getSceneX();
                mousey=e.getSceneY();
                if(canSelect){
-                   model.disStroke(board);
+                   if(moveLevel!=MoveLevel.maxMin2 && moveLevel!=MoveLevel.minMax2) {
+                       model.disStroke(board);
+                   }else{
+                       model.disStrokeMove2(board,undo[0]);
+                   }
                    mypiece.setStroke(Color.valueOf("#008000"));
                    mypiece.setStrokeWidth(3);
 

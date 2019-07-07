@@ -70,6 +70,7 @@ public class Model {
     public void disStroke(Cell[] board){
         if(min.isEmpty()){
             if(!max.isEmpty()) {
+                System.out.println("here345");
                 for (Integer i : max.keySet()) {
                     if(!max.get(i).isEmpty()) {
                         board[i].pieces.get(board[i].piece_n - 1).disStroke();
@@ -108,6 +109,20 @@ public class Model {
 
 
         }
+    }
+
+    public void disStrokeMove2(Cell[] board, int cellNum){
+        ArrayList<Integer> arrayList;
+        if(Controller.moveLevel==MoveLevel.minMax2) {
+            arrayList = min.get(cellNum);
+        }else {
+            arrayList = max.get(cellNum);
+        }
+
+            for(int i=0;i< arrayList.size();i++){
+                board[arrayList.get(i)].pieces.get(board[arrayList.get(i)].piece_n-1).disStroke();
+            }
+
     }
 
     public void detectStroke(Cell[] board, int diceMax , int diceMin, boolean turn){
